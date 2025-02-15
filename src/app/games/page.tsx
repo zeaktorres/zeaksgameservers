@@ -3,9 +3,8 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import dynamic from "next/dynamic";
+import Drawer from "@/components/Drawer";
 
-// Dynamically import the Drawer component
-const Drawer = dynamic(() => import("@/components/Drawer"), { ssr: false });
 
 export default function ZombieGamePage() {
   const [isOpen, setIsOpen] = useState(false); // State to close drawer on navigation
