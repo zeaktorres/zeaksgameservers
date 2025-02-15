@@ -1,14 +1,8 @@
 "use client";
 
-import {
-  Sheet,
-  SheetContent,
-  SheetTrigger,
-  SheetTitle,
-} from "@/components/ui/sheet";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { Menu } from "lucide-react";
+import Drawer from "@/components/Drawer";
 
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false); // State to close drawer on navigation
@@ -28,38 +22,7 @@ export default function Home() {
       </h1>
 
       {/* Drawer Component */}
-      <Sheet>
-        <SheetTrigger className="fixed top-5 left-5 bg-transparent p-2 rounded-md text-gray-700 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 transition">
-          <Menu className="w-6 h-6" />
-        </SheetTrigger>
-
-        {/* Drawer Content (Now on the LEFT Side) */}
-        <SheetContent
-          side="left"
-          className="w-80 p-4 bg-white dark:bg-gray-800 shadow-lg"
-        >
-          {/* Accessibility Requirement: Add a Title */}
-          <SheetTitle className="text-lg font-bold text-gray-900 dark:text-white">
-            Menu
-          </SheetTitle>
-
-          {/* Navigation Buttons */}
-          <div className="mt-4 space-y-2">
-            <button
-              onClick={() => navigateTo("/servers")}
-              className="block w-full bg-gray-200 p-2 rounded dark:bg-gray-700"
-            >
-              servers
-            </button>
-            <button
-              onClick={() => navigateTo("/games")}
-              className="block w-full bg-gray-200 p-2 rounded dark:bg-gray-700"
-            >
-              games
-            </button>
-          </div>
-        </SheetContent>
-      </Sheet>
+      <Drawer navigateTo={navigateTo} />
     </div>
   );
 }
