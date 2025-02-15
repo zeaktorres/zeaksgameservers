@@ -6,11 +6,19 @@ import {
   SheetTrigger,
   SheetTitle,
 } from "@/components/ui/sheet";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Menu } from "lucide-react";
 
 export default function Home() {
-  const [currentPage, setCurrentPage] = useState<string | null>(null);
+  const [isOpen, setIsOpen] = useState(false); // State to close drawer on navigation
+  const router = useRouter(); // Next.js Router
+
+  // Function to navigate and close the drawer
+  const navigateTo = (path: string) => {
+    router.push(path);
+    setIsOpen(false); // Close the drawer after navigating
+  };
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-gray-100 dark:bg-gray-900">
@@ -38,28 +46,17 @@ export default function Home() {
           {/* Navigation Buttons */}
           <div className="mt-4 space-y-2">
             <button
-              onClick={() => setCurrentPage("Page 1")}
+              onClick={() => navigateTo("/servers")}
               className="block w-full bg-gray-200 p-2 rounded dark:bg-gray-700"
             >
               Page 1
             </button>
             <button
-              onClick={() => setCurrentPage("Page 2")}
+              onClick={() => navigateTo("/games")}
               className="block w-full bg-gray-200 p-2 rounded dark:bg-gray-700"
             >
               Page 2
             </button>
-          </div>
-
-          {/* Dynamic Content Area */}
-          <div className="mt-4 border-t pt-4">
-            {currentPage ? (
-              <h2 className="text-lg text-gray-900 dark:text-white">
-                {currentPage} Content
-              </h2>
-            ) : (
-              <p className="text-gray-500 dark:text-gray-400">Select a page</p>
-            )}
           </div>
         </SheetContent>
       </Sheet>
