@@ -49,13 +49,13 @@ export default function Home() {
               onClick={() => navigateTo("/servers")}
               className="block w-full bg-gray-200 p-2 rounded dark:bg-gray-700"
             >
-              Page 1
+              servers
             </button>
             <button
               onClick={() => navigateTo("/games")}
               className="block w-full bg-gray-200 p-2 rounded dark:bg-gray-700"
             >
-              Page 2
+              games
             </button>
           </div>
         </SheetContent>
